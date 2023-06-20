@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr-fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta property="og:url" content="http://samourai-insoumis.fr" />
+    <meta property="og:title" content="Samouraï Insoumis" />
+    <meta property="og:image" content="https://lh3.googleusercontent.com/wXXBbs29u3s3QXr5qOaQUw9r6gin9FN0YNT22tA-AZaulEo1-aY1RkODBX9GYm7dU4Y=w300-rw" />
+    <title>Samouraï Insoumis</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <style>
+      body {
+        background-color: #000;
+        font-family: 'Droid Sans', sans-serif;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      a, a:visited {
+        color: #fff;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #c9462c;
+      }
+
+      #mobile-only {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        background-color: #0098b6;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        position: absolute;
+        width: 885px;
+      }
+
+      .loading {
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        margin-top: 300px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="template">
+    <div class="template-wrap clear">
+      <div class="loading">Chargement du jeu en cours...</div>
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+      <br>
+      <div class="fullscreen">
+        <img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" />
+      </div>
+
+      <div id="mobile-only" class="hidden">
+        La publication de votre score et la consultation des meilleurs scores est uniquement disponible sur la <a href="https://play.google.com/store/apps/details?id=com.FranceInsoumise.SamouraiInsoumis&hl=fr" target="_blank">version mobile (Android) du jeu</a>
+      </div>
+
+      <div id="android">
+        <a href="https://play.google.com/store/apps/details?id=com.FranceInsoumise.SamouraiInsoumis&hl=fr" target="_blank">
+          <img src="TemplateData/google-play-badge.png" />
+        </a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" language="javascript">
+      $('#mobile-only').click(function(){
+        $(this).addClass('hidden');
+      });
+
+      function fallback() {
+        console.log('fallback');
+        $('#mobile-only').removeClass('hidden');
+      }
+    </script>
+
+    <script type='text/javascript'>
+      var Module = {
+        TOTAL_MEMORY: 268435456,
+        errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+        compatibilitycheck: null,
+        backgroundColor: "#222C36",
+        splashStyle: "Light",
+        dataUrl: "Release/web.data",
+        codeUrl: "Release/web.js",
+        asmUrl: "Release/web.asm.js",
+        memUrl: "Release/web.mem",
+      };
+    </script>
+    <script src="Release/UnityLoader.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-97183777-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
